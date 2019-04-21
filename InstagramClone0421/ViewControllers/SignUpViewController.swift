@@ -66,15 +66,19 @@ class SignUpViewController: UIViewController {
                         }
                         let profileImageURL = URL?.absoluteString
                         
-                        let ref = Database.database().reference()
-                        let usersRef = ref.child("users")
-                        let newUserRef = usersRef.child(uid!)
-                        newUserRef.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "profileImageURL": profileImageURL])
+                        self.setUserInfomation(username: self.usernameTextField.text!, email: self.emailTextField.text!, profileImageURL: profileImageURL!, uid: uid!)
                     })
                 })
             }
             
         }
+    }
+    
+    func setUserInfomation(username: String, email: String, profileImageURL: String, uid: String) {
+        let ref = Database.database().reference()
+        let usersRef = ref.child("users")
+        let newUserRef = usersRef.child(uid)
+        newUserRef.setValue(["username": username, "email": email, "profileImageURL": profileImageURL])
     }
     
 }
