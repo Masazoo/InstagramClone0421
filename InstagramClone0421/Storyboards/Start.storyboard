@@ -54,7 +54,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fHA-j7-hJG">
                                 <rect key="frame" x="28" y="474" width="319" height="60"/>
-                                <color key="backgroundColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="0.79852846746575346" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="DZ4-dy-l14"/>
                                 </constraints>
@@ -128,7 +128,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggu-vi-Oza">
                                 <rect key="frame" x="28" y="499" width="319" height="58"/>
-                                <color key="backgroundColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="0.79852846749999995" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.75686274509999996" green="0.75686274509999996" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="NNM-ol-qHl"/>
                                 </constraints>
@@ -183,6 +183,7 @@
                         <outlet property="emailTextField" destination="2hz-4F-ADf" id="JsZ-oQ-aqw"/>
                         <outlet property="passwordTextFiled" destination="hAv-rM-xz2" id="jRt-0U-Btk"/>
                         <outlet property="profileImage" destination="ddV-xM-gjH" id="DOr-PV-3md"/>
+                        <outlet property="signUpBtn" destination="ggu-vi-Oza" id="Ncq-zd-hV4"/>
                         <outlet property="usernameTextField" destination="Znf-wL-D7I" id="JEM-E1-CgT"/>
                     </connections>
                 </viewController>
