@@ -23,8 +23,14 @@ class SignInViewController: UIViewController {
         handleTextField()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "signInToTabber", sender: nil)
+        }
+    }
+    
     func handleTextField() {
-        
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
         passwordTextFIeld.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
     }
