@@ -62,7 +62,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hXU-K0-8pD" kind="presentation" id="tag-Pr-mPX"/>
+                                    <action selector="signInBtn_TouchUpInside:" destination="Iya-xI-BC8" eventType="touchUpInside" id="gYB-DC-kMz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -85,6 +85,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bab-8N-p8O"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="3Kt-A3-9wE" id="gHc-DY-H8k"/>
+                        <outlet property="passwordTextFIeld" destination="8Nk-5r-91C" id="I7a-EM-Xa7"/>
+                        <outlet property="signInBtn" destination="fHA-j7-hJG" id="DpY-3Y-yS0"/>
+                        <segue destination="hXU-K0-8pD" kind="presentation" identifier="signInToTabber" id="cMn-Gh-P5K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zEx-X1-9bA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +143,6 @@
                                 </state>
                                 <connections>
                                     <action selector="signUp_TouchUpInside:" destination="eNf-8J-rvs" eventType="touchUpInside" id="Wst-bC-DRd"/>
-                                    <segue destination="hXU-K0-8pD" kind="presentation" id="K8N-7R-Zvy"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザーネーム" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Znf-wL-D7I">
@@ -181,10 +186,11 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="2hz-4F-ADf" id="JsZ-oQ-aqw"/>
-                        <outlet property="passwordTextFiled" destination="hAv-rM-xz2" id="jRt-0U-Btk"/>
+                        <outlet property="passwordTextField" destination="hAv-rM-xz2" id="Tal-e4-2QY"/>
                         <outlet property="profileImage" destination="ddV-xM-gjH" id="DOr-PV-3md"/>
                         <outlet property="signUpBtn" destination="ggu-vi-Oza" id="Ncq-zd-hV4"/>
                         <outlet property="usernameTextField" destination="Znf-wL-D7I" id="JEM-E1-CgT"/>
+                        <segue destination="hXU-K0-8pD" kind="presentation" identifier="signUpToTabber" id="kXM-re-ISj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp3-6a-aq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -212,6 +218,6 @@
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K8N-7R-Zvy"/>
+        <segue reference="kXM-re-ISj"/>
     </inferredMetricsTieBreakers>
 </document>
