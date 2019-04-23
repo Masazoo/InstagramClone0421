@@ -23,8 +23,14 @@ class SignInViewController: UIViewController {
         handleTextField()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "signInToTabber", sender: nil)
+        }
+    }
+    
     func handleTextField() {
-        
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
         passwordTextFIeld.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
     }
@@ -42,12 +48,10 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func signInBtn_TouchUpInside(_ sender: Any) {
-        Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextFIeld.text!) { (AuthDataResult, Error) in
-            if Error != nil {
-                print(Error!.localizedDescription)
-                return
-            }
+        AuthService.signIn(email: self.emailTextField.text!, password: self.passwordTextFIeld.text!, onSuccess: {
             self.performSegue(withIdentifier: "signInToTabber", sender: nil)
+        }) { (error) in
+            print(error!)
         }
     }
     
