@@ -15,7 +15,7 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextFiled: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var signUpBtn: UIButton!
     
@@ -39,11 +39,11 @@ class SignUpViewController: UIViewController {
     func handleTextField() {
         usernameTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
-        passwordTextFiled.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
     }
     
     func textFieldDidChange() {
-        guard let username = usernameTextField.text, !username.isEmpty, let email = emailTextField.text, !email.isEmpty, let password = passwordTextFiled.text, !password.isEmpty else {
+        guard let username = usernameTextField.text, !username.isEmpty, let email = emailTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
             signUpBtn.setTitleColor(.white, for: .normal)
             signUpBtn.isEnabled = false
             return
@@ -66,7 +66,7 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func signUp_TouchUpInside(_ sender: Any) {
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextFiled.text!) { (AuthDataResult, Error) in
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (AuthDataResult, Error) in
             if Error != nil {
                 print(Error!.localizedDescription)
                 return
@@ -92,6 +92,8 @@ class SignUpViewController: UIViewController {
             }
             
         }
+        
+        self.performSegue(withIdentifier: "signUpToTabber", sender: nil)
     }
     
     func setUserInfomation(username: String, email: String, profileImageURL: String, uid: String) {
