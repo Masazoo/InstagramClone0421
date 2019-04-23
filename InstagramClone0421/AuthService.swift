@@ -17,6 +17,7 @@ class AuthService {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 onError(error?.localizedDescription)
+                return
             }
             onSuccess()
         }
