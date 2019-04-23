@@ -48,12 +48,10 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func signInBtn_TouchUpInside(_ sender: Any) {
-        Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextFIeld.text!) { (AuthDataResult, Error) in
-            if Error != nil {
-                print(Error!.localizedDescription)
-                return
-            }
+        AuthService.signIn(email: self.emailTextField.text!, password: self.passwordTextFIeld.text!, onSuccess: {
             self.performSegue(withIdentifier: "signInToTabber", sender: nil)
+        }) { (error) in
+            print(error!)
         }
     }
     
