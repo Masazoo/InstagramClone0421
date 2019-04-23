@@ -36,6 +36,10 @@ class SignUpViewController: UIViewController {
         handleTextField()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     func handleTextField() {
         usernameTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
@@ -68,15 +72,17 @@ class SignUpViewController: UIViewController {
     
     
     @IBAction func signUp_TouchUpInside(_ sender: Any) {
-        
+        view.endEditing(true)
+        ProgressHUD.show("wating...", interaction: false)
         if let profileImage = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
             AuthService.signUp(username: self.usernameTextField.text!, email: self.emailTextField.text!, password: self.passwordTextField.text!, imageData: imageData, onSuccess: {
+                ProgressHUD.showSuccess("サインアップに成功しました")
                 self.performSegue(withIdentifier: "signUpToTabber", sender: nil)
             }) { (error) in
-                print(error!)
+                ProgressHUD.showError(error!)
             }
         }else{
-            print("no image")
+            ProgressHUD.show("画像を選択してください")
         }
     }
     

@@ -23,6 +23,10 @@ class SignInViewController: UIViewController {
         handleTextField()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if Auth.auth().currentUser != nil {
@@ -48,10 +52,15 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func signInBtn_TouchUpInside(_ sender: Any) {
+        view.endEditing(true)
+        ProgressHUD.show("wating...", interaction: false)
+        
         AuthService.signIn(email: self.emailTextField.text!, password: self.passwordTextFIeld.text!, onSuccess: {
+            ProgressHUD.showSuccess("ログインに成功しました")
             self.performSegue(withIdentifier: "signInToTabber", sender: nil)
+            
         }) { (error) in
-            print(error!)
+            ProgressHUD.showError(error!)
         }
     }
     
