@@ -65,43 +65,22 @@ class SignUpViewController: UIViewController {
     }
     
     
+    
+    
     @IBAction func signUp_TouchUpInside(_ sender: Any) {
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (AuthDataResult, Error) in
-            if Error != nil {
-                print(Error!.localizedDescription)
-                return
-            }
-            
-            let uid = AuthDataResult?.user.uid
-            let storageRef = Storage.storage().reference(forURL: "gs://train-dbed9.appspot.com/").child("profile_image").child(uid!)
-            if let profileImage = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
-                storageRef.putData(imageData, metadata: nil, completion: { (StorageMetadata, Error) in
-                    if Error != nil {
-                        return
-                    }
-                    
-                    storageRef.downloadURL(completion: { (URL, Error) in
-                        if Error != nil {
-                            return
-                        }
-                        let profileImageURL = URL?.absoluteString
-                        
-                        self.setUserInfomation(username: self.usernameTextField.text!, email: self.emailTextField.text!, profileImageURL: profileImageURL!, uid: uid!)
-                    })
-                })
-            }
-            
-        }
         
-        self.performSegue(withIdentifier: "signUpToTabber", sender: nil)
+        if let profileImage = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
+            AuthService.signUp(username: self.usernameTextField.text!, email: self.emailTextField.text!, password: self.passwordTextField.text!, imageData: imageData, onSuccess: {
+                self.performSegue(withIdentifier: "signUpToTabber", sender: nil)
+            }) { (error) in
+                print(error!)
+            }
+        }else{
+            print("no image")
+        }
     }
     
-    func setUserInfomation(username: String, email: String, profileImageURL: String, uid: String) {
-        let ref = Database.database().reference()
-        let usersRef = ref.child("users")
-        let newUserRef = usersRef.child(uid)
-        newUserRef.setValue(["username": username, "email": email, "profileImageURL": profileImageURL])
-    }
+    
     
 }
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

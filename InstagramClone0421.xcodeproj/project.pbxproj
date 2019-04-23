@@ -27,6 +27,7 @@
 		6E847503226C4BBA00E4927E /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E847502226C4BBA00E4927E /* Activity.storyboard */; };
 		6E847505226C4BD400E4927E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E847504226C4BD400E4927E /* Profile.storyboard */; };
 		6E847508226C515000E4927E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E847507226C515000E4927E /* GoogleService-Info.plist */; };
+		6E84750C226EB1C100E4927E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E84750B226EB1C100E4927E /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		6E847502226C4BBA00E4927E /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		6E847504226C4BD400E4927E /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		6E847507226C515000E4927E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6E84750B226EB1C100E4927E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		CB7AB0832BFE3EEA4B09D289 /* Pods-InstagramClone0421.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone0421.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramClone0421/Pods-InstagramClone0421.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				6E8474D4226C230500E4927E /* AppDelegate.swift */,
+				6E84750B226EB1C100E4927E /* AuthService.swift */,
 				6E8474F9226C4A6000E4927E /* ViewControllers */,
 				6E847506226C507000E4927E /* Storyboards */,
 				6E8474DE226C230700E4927E /* Assets.xcassets */,
@@ -286,6 +289,7 @@
 				6E8474F6226C3D9000E4927E /* ActivityViewController.swift in Sources */,
 				6E8474D5226C230500E4927E /* AppDelegate.swift in Sources */,
 				6E8474F4226C3D8500E4927E /* CameraViewController.swift in Sources */,
+				6E84750C226EB1C100E4927E /* AuthService.swift in Sources */,
 				6E8474EE226C3D5900E4927E /* SignUpViewController.swift in Sources */,
 				6E8474F0226C3D6700E4927E /* HomeViewController.swift in Sources */,
 			);
