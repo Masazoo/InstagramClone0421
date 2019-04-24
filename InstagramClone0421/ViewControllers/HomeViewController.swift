@@ -10,11 +10,13 @@ import UIKit
 import FirebaseAuth
 
 class HomeViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableview.dataSource = self
     }
     
     
@@ -29,4 +31,18 @@ class HomeViewController: UIViewController {
     }
     
 
+}
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableview.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
+        cell.backgroundColor = .blue
+        cell.textLabel?.text = "\(indexPath)"
+        return cell
+    }
+    
+    
 }
