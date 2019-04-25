@@ -89,7 +89,8 @@ class CameraViewController: UIViewController {
         let postsRef = ref.child("posts")
         let newPostsId = postsRef.childByAutoId().key
         let newPostsrRef = postsRef.child(newPostsId!)
-        newPostsrRef.setValue(["photoURL": photoURL, "caption": captionTextView.text!]) { (Error, DatabaseReference) in
+        let uid = Auth.auth().currentUser?.uid
+        newPostsrRef.setValue(["photoURL": photoURL, "caption": captionTextView.text!, "uid": uid!]) { (Error, DatabaseReference) in
             if Error != nil {
                 ProgressHUD.showError(Error?.localizedDescription)
             }
