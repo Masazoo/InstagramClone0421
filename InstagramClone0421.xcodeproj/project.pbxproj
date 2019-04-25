@@ -31,6 +31,8 @@
 		6EC974A2226ECD4900858F8A /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6EC9749F226ECD4900858F8A /* ProgressHUD.bundle */; };
 		6EC974A3226ECD4900858F8A /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EC974A0226ECD4900858F8A /* ProgressHUD.m */; };
 		6EC974A5226FF05C00858F8A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC974A4226FF05C00858F8A /* Post.swift */; };
+		6EC974A822701B7400858F8A /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC974A722701B7400858F8A /* HomeTableViewCell.swift */; };
+		6EFA53742270472400B73BFE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFA53732270472400B73BFE /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		6EC974A0226ECD4900858F8A /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		6EC974A1226ECD4900858F8A /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		6EC974A4226FF05C00858F8A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		6EC974A722701B7400858F8A /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		6EFA53732270472400B73BFE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CB7AB0832BFE3EEA4B09D289 /* Pods-InstagramClone0421.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone0421.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramClone0421/Pods-InstagramClone0421.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +113,7 @@
 			children = (
 				6E8474D4226C230500E4927E /* AppDelegate.swift */,
 				6E84750B226EB1C100E4927E /* AuthService.swift */,
+				6EC974A922701B7E00858F8A /* Views */,
 				6EC974A6226FF06200858F8A /* Model */,
 				6E8474F9226C4A6000E4927E /* ViewControllers */,
 				6E847506226C507000E4927E /* Storyboards */,
@@ -157,8 +162,17 @@
 			isa = PBXGroup;
 			children = (
 				6EC974A4226FF05C00858F8A /* Post.swift */,
+				6EFA53732270472400B73BFE /* UserModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6EC974A922701B7E00858F8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6EC974A722701B7400858F8A /* HomeTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		916EE469315E22ABF2B7BF74 /* Pods */ = {
@@ -281,6 +295,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-InstagramClone0421/Pods-InstagramClone0421-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -290,6 +305,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -307,11 +323,13 @@
 			files = (
 				6E8474EC226C3D5000E4927E /* SignInViewController.swift in Sources */,
 				6E8474DD226C230500E4927E /* InstagramClone0421.xcdatamodeld in Sources */,
+				6EC974A822701B7400858F8A /* HomeTableViewCell.swift in Sources */,
 				6E8474F8226C3D9B00E4927E /* ProfileViewController.swift in Sources */,
 				6EC974A5226FF05C00858F8A /* Post.swift in Sources */,
 				6E8474F2226C3D7900E4927E /* DiscoverViewController.swift in Sources */,
 				6E8474F6226C3D9000E4927E /* ActivityViewController.swift in Sources */,
 				6E8474D5226C230500E4927E /* AppDelegate.swift in Sources */,
+				6EFA53742270472400B73BFE /* UserModel.swift in Sources */,
 				6EC974A3226ECD4900858F8A /* ProgressHUD.m in Sources */,
 				6E8474F4226C3D8500E4927E /* CameraViewController.swift in Sources */,
 				6E84750C226EB1C100E4927E /* AuthService.swift in Sources */,
