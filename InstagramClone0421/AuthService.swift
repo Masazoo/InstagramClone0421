@@ -32,7 +32,7 @@ class AuthService {
             }
             
             let uid = AuthDataResult?.user.uid
-            let storageRef = Storage.storage().reference(forURL: "gs://train-dbed9.appspot.com/").child("profile_image").child(uid!)
+            let storageRef = Storage.storage().reference(forURL: Config.STORAGE_ROOF_REF).child("profile_image").child(uid!)
 
                 storageRef.putData(imageData, metadata: nil, completion: { (StorageMetadata, Error) in
                     if Error != nil {
