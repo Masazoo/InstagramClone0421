@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 import SDWebImage
 
 class HomeTableViewCell: UITableViewCell {
@@ -43,7 +44,21 @@ class HomeTableViewCell: UITableViewCell {
             let photoUrl = URL(string: photoUrlString)
             postImageView.sd_setImage(with: photoUrl)
         }
+        
+        Api.Post.REF_POSTS.child(post!.postId!).observeSingleEvent(of: .value, with: { (DataSnapshot) in
+            if let dict = DataSnapshot.value as? [String: Any] {
+                let post = Post.transformPostPhoto(dict: dict, key: DataSnapshot.key)
+                self.updateLike(post: post)
+            }
+        })
+        
+        Api.Post.REF_POSTS.child((post?.postId)!).observe(.childChanged, with: { (DataSnapshot) in
+            if let value = DataSnapshot.value as? Int {
+                self.likeCountBtn.setTitle("\(value) likes", for: .normal)
+            }
+        })
     }
+    
     
     func setUserInfo() {
         self.nameLabel.text = user?.username
@@ -83,7 +98,58 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func likeImageView_TouchUpInside() {
-        print("tapped")
+        let postRef = Api.Post.REF_POSTS.child(post!.postId!)
+        incrementsLikes(forRef: postRef)
+    }
+    
+    func updateLike(post: Post) {
+        let imageName = post.likes == nil || !post.isLiked! ? "like" : "likeSelected"
+        likeImageView.image = UIImage(named: imageName)
+        guard let count = post.likeCount else {
+            return
+        }
+        if count != 0 {
+            likeCountBtn.setTitle("\(count) likes", for: .normal)
+        } else {
+            likeCountBtn.setTitle("最初のLikeを押してね", for: .normal)
+        }
+        
+    }
+    
+    
+    func incrementsLikes(forRef ref: DatabaseReference) {
+        ref.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+            if var post = currentData.value as? [String : AnyObject], let uid = Auth.auth().currentUser?.uid {
+                
+                var likes: Dictionary<String, Bool>
+                likes = post["likes"] as? [String : Bool] ?? [:]
+                
+                var likeCount = post["likeCount"] as? Int ?? 0
+                
+                if let _ = likes[uid] {
+                    likeCount -= 1
+                    likes.removeValue(forKey: uid)
+                } else {
+                    likeCount += 1
+                    likes[uid] = true
+                }
+                post["likeCount"] = likeCount as AnyObject?
+                post["likes"] = likes as AnyObject?
+                
+                currentData.value = post
+                
+                return TransactionResult.success(withValue: currentData)
+            }
+            return TransactionResult.success(withValue: currentData)
+        }) { (error, committed, snapshot) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let dict = snapshot?.value as? [String: Any] {
+                let post = Post.transformPostPhoto(dict: dict, key: snapshot!.key)
+                self.updateLike(post: post)
+            }
+        }
     }
     
     override func prepareForReuse() {
