@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class CommentViewController: UIViewController {
 
@@ -115,7 +114,7 @@ class CommentViewController: UIViewController {
         let commentsRef = Api.Comment.REF_COMMENTS
         let newCommentsId = commentsRef.childByAutoId().key
         let newCommentsRef = commentsRef.child(newCommentsId!)
-        let uid = Auth.auth().currentUser?.uid
+        let uid = Api.User.CURRENT_USER?.uid
         newCommentsRef.setValue(["commentText": commentTextField.text!, "uid": uid!]) { (Error, DatabaseReference) in
             if Error != nil {
                 ProgressHUD.showError(Error?.localizedDescription)
