@@ -27,6 +27,7 @@ class CommentViewController: UIViewController {
         loadComment()
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         
         handleTextField()
         sendBtnDefault()

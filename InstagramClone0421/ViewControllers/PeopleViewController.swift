@@ -20,6 +20,7 @@ class PeopleViewController: UIViewController {
 
         tableView.separatorStyle = .none
         tableView.dataSource = self
+        tableView.allowsSelection = false
         
         loadUsers()
     }
@@ -27,10 +28,15 @@ class PeopleViewController: UIViewController {
 
     func loadUsers() {
         Api.User.observeUsers { (user) in
-            self.users.append(user)
-            self.tableView.reloadData()
+            Api.follow.isFollowing(uid: user.uid!, completed: { (value) in
+                user.isFollowing = value
+                self.users.append(user)
+                self.tableView.reloadData()
+            })
         }
     }
+    
+    
 
 }
 extension PeopleViewController: UITableViewDataSource {

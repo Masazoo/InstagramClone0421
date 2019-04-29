@@ -202,32 +202,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleCell" rowHeight="80" id="G31-8W-cf6" customClass="PeopleTableViewCell" customModule="InstagramClone0421" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleCell" rowHeight="90" id="G31-8W-cf6" customClass="PeopleTableViewCell" customModule="InstagramClone0421" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G31-8W-cf6" id="6OP-Wz-kt9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G31-8W-cf6" id="6OP-Wz-kt9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImg" translatesAutoresizingMaskIntoConstraints="NO" id="Rz1-HK-1Dv">
-                                                    <rect key="frame" x="15" y="10" width="36" height="36"/>
+                                                    <rect key="frame" x="15" y="10" width="60" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="36" id="AGh-x3-XhD"/>
-                                                        <constraint firstAttribute="height" constant="36" id="eYg-AB-O5X"/>
+                                                        <constraint firstAttribute="width" constant="60" id="AGh-x3-XhD"/>
+                                                        <constraint firstAttribute="height" constant="60" id="eYg-AB-O5X"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmf-gx-8Ml">
-                                                    <rect key="frame" x="66" y="19.5" width="69" height="17"/>
+                                                    <rect key="frame" x="90" y="31.5" width="69" height="17"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sn0-ff-dVG">
-                                                    <rect key="frame" x="268" y="13" width="92" height="30"/>
-                                                    <state key="normal" title="フォローする"/>
-                                                    <connections>
-                                                        <action selector="followBtn_TouchUpInside:" destination="G31-8W-cf6" eventType="touchUpInside" id="axT-UL-j6z"/>
-                                                    </connections>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sn0-ff-dVG">
+                                                    <rect key="frame" x="268" y="25" width="92" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal" title="フォローする">
+                                                        <color key="titleColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -237,6 +237,7 @@
                                                 <constraint firstItem="lmf-gx-8Ml" firstAttribute="centerY" secondItem="Rz1-HK-1Dv" secondAttribute="centerY" id="PeW-sa-wCI"/>
                                                 <constraint firstItem="Rz1-HK-1Dv" firstAttribute="top" secondItem="6OP-Wz-kt9" secondAttribute="top" constant="10" id="fPi-s0-eZQ"/>
                                                 <constraint firstItem="lmf-gx-8Ml" firstAttribute="leading" secondItem="Rz1-HK-1Dv" secondAttribute="trailing" constant="15" id="iYK-Lh-TL2"/>
+                                                <constraint firstAttribute="bottom" secondItem="Rz1-HK-1Dv" secondAttribute="bottom" constant="10" id="pSy-xs-K8L"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
