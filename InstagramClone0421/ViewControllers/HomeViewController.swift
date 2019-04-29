@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .none
         tableView.dataSource = self
+        tableView.allowsSelection = false
         loadPosts()
         
         
