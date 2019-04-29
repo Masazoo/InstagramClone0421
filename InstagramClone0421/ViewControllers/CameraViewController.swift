@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseStorage
-import FirebaseDatabase
 
 class CameraViewController: UIViewController {
 
@@ -65,40 +62,15 @@ class CameraViewController: UIViewController {
         view.endEditing(false)
         ProgressHUD.show("wating...", interaction: true)
         if let photoImage = self.selectedImage, let imageData = UIImageJPEGRepresentation(photoImage, 0.1) {
-                let photoIdString = NSUUID().uuidString
-                let storageRef = Storage.storage().reference(forURL: "gs://train-dbed9.appspot.com/").child("posts").child(photoIdString)
-                storageRef.putData(imageData, metadata: nil, completion: { (StorageMetadata, Error) in
-                    if Error != nil {
-                        return
-                    }
-                    storageRef.downloadURL(completion: { (URL, Error) in
-                        if Error != nil {
-                            return
-                        }
-                        let photoURL = URL?.absoluteString
-                        self.sendDataToDatabase(photoURL: photoURL!)
-                    })
-                })
+            HelperService.uploardDataToServer(imageData: imageData, caption: captionTextView.text!) {
+                self.clean()
+                self.tabBarController?.selectedIndex = 0
+            }
         }else{
             ProgressHUD.showError("写真を選んでください")
         }
     }
     
-    func sendDataToDatabase(photoURL: String) {
-        let ref = Database.database().reference()
-        let postsRef = ref.child("posts")
-        let newPostsId = postsRef.childByAutoId().key
-        let newPostsrRef = postsRef.child(newPostsId!)
-        let uid = Auth.auth().currentUser?.uid
-        newPostsrRef.setValue(["photoURL": photoURL, "caption": captionTextView.text!, "uid": uid!]) { (Error, DatabaseReference) in
-            if Error != nil {
-                ProgressHUD.showError(Error?.localizedDescription)
-            }
-            ProgressHUD.showSuccess("投稿が成功しました")
-            self.clean()
-            self.tabBarController?.selectedIndex = 0
-        }
-    }
     
     func clean() {
         self.photo.image = UIImage(named: "Placeholder-image")

@@ -23,6 +23,15 @@ class AuthService {
         }
     }
     
+    static func logout(onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            onSuccess()
+        } catch let loguotError {
+            onError(loguotError.localizedDescription)
+        }
+    }
+    
     
     static func signUp(username: String, email: String, password: String, imageData: Data, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (AuthDataResult, Error) in
@@ -32,7 +41,7 @@ class AuthService {
             }
             
             let uid = AuthDataResult?.user.uid
-            let storageRef = Storage.storage().reference(forURL: "gs://train-dbed9.appspot.com/").child("profile_image").child(uid!)
+            let storageRef = Storage.storage().reference(forURL: Config.STORAGE_ROOF_REF).child("profile_image").child(uid!)
 
                 storageRef.putData(imageData, metadata: nil, completion: { (StorageMetadata, Error) in
                     if Error != nil {
@@ -59,4 +68,6 @@ class AuthService {
         onSuccess()
         
     }
+    
+    
 }

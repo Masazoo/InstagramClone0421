@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
 import SDWebImage
 
 class HomeTableViewCell: UITableViewCell {
@@ -21,6 +20,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCountBtn: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
+    var homeVC: HomeViewController?
     
     var post: Post? {
         didSet {
@@ -42,7 +42,17 @@ class HomeTableViewCell: UITableViewCell {
             let photoUrl = URL(string: photoUrlString)
             postImageView.sd_setImage(with: photoUrl)
         }
+        
+        Api.Post.observePost(postId: post!.postId!) { (post) in
+            self.updateLike(post: post)
+        }
+        
+        Api.Post.observeLikeCount(postId: post!.postId!) { (likeCount) in
+            self.likeCountBtn.setTitle("\(likeCount) likes", for: .normal)
+        }
+        
     }
+    
     
     func setUserInfo() {
         self.nameLabel.text = user?.username
@@ -65,7 +75,44 @@ class HomeTableViewCell: UITableViewCell {
         captionLabel.numberOfLines = 0
         captionLabel.text = ""
         nameLabel.text = ""
+        
+        let commentTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.commentImageView_TouchUpInside))
+        commentImageView.addGestureRecognizer(commentTapGesture)
+        commentImageView.isUserInteractionEnabled = true
+        
+        let likeTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.likeImageView_TouchUpInside))
+        likeImageView.addGestureRecognizer(likeTapGesture)
+        likeImageView.isUserInteractionEnabled = true
     }
+    
+    func commentImageView_TouchUpInside() {
+        if let id = post?.postId {
+            homeVC?.performSegue(withIdentifier: "HomeToCommentSegue", sender: id)
+        }
+    }
+    
+    func likeImageView_TouchUpInside() {
+        Api.Post.incrementsLikes(postId: post!.postId!, onSuccess: { (post) in
+            self.updateLike(post: post)
+        }) { (error) in
+            ProgressHUD.showError(error)
+        }
+    }
+    
+    func updateLike(post: Post) {
+        let imageName = post.likes == nil || !post.isLiked! ? "like" : "likeSelected"
+        likeImageView.image = UIImage(named: imageName)
+        guard let count = post.likeCount else {
+            return
+        }
+        if count != 0 {
+            likeCountBtn.setTitle("\(count) likes", for: .normal)
+        } else {
+            likeCountBtn.setTitle("最初のLikeを押してね", for: .normal)
+        }
+        
+    }
+    
     
     override func prepareForReuse() {
         super.prepareForReuse()
