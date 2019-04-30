@@ -59,6 +59,18 @@ class UserApi {
         })
     }
     
+    func queryUsers(text: String, completion: @escaping (UserModel) -> Void) {
+        REF_USERS.queryOrdered(byChild: "username_lowercase").queryStarting(atValue: text).queryEnding(atValue: text+"\u{f8ff}").queryLimited(toLast: 10).observeSingleEvent(of: .value, with: { (DataSnapshot) in
+            DataSnapshot.children.forEach({ (s) in
+                let child = s as! DataSnapshot
+                if let dict = child.value as? [String: Any] {
+                    let user = UserModel.transformUser(dict: dict, key: child.key)
+                    completion(user)
+                }
+            })
+        })
+    }
+    
 
     
     
