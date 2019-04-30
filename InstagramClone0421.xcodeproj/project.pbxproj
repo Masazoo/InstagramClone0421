@@ -49,6 +49,7 @@
 		6EFA539A22768E2000B73BFE /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFA539922768E2000B73BFE /* PeopleViewController.swift */; };
 		6EFA539C22768E3500B73BFE /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFA539B22768E3500B73BFE /* PeopleTableViewCell.swift */; };
 		6EFA539E2276DD7400B73BFE /* FollowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFA539D2276DD7400B73BFE /* FollowApi.swift */; };
+		6EFA53A0227806C900B73BFE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFA539F227806C900B73BFE /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		6EFA539922768E2000B73BFE /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		6EFA539B22768E3500B73BFE /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
 		6EFA539D2276DD7400B73BFE /* FollowApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowApi.swift; sourceTree = "<group>"; };
+		6EFA539F227806C900B73BFE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CB7AB0832BFE3EEA4B09D289 /* Pods-InstagramClone0421.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramClone0421.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramClone0421/Pods-InstagramClone0421.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 				6E8474EF226C3D6700E4927E /* HomeViewController.swift */,
 				6EFA537B2271607000B73BFE /* CommentViewController.swift */,
 				6E8474F1226C3D7900E4927E /* DiscoverViewController.swift */,
+				6EFA539F227806C900B73BFE /* SearchViewController.swift */,
 				6E8474F3226C3D8500E4927E /* CameraViewController.swift */,
 				6E8474F5226C3D9000E4927E /* ActivityViewController.swift */,
 				6E8474F7226C3D9B00E4927E /* ProfileViewController.swift */,
@@ -376,6 +379,7 @@
 				6EC974A822701B7400858F8A /* HomeTableViewCell.swift in Sources */,
 				6EFA53962273D86400B73BFE /* MyPosts.swift in Sources */,
 				6EFA53942273039600B73BFE /* HeaderProfileCollectionViewCell.swift in Sources */,
+				6EFA53A0227806C900B73BFE /* SearchViewController.swift in Sources */,
 				6E8474F8226C3D9B00E4927E /* ProfileViewController.swift in Sources */,
 				6EC974A5226FF05C00858F8A /* Post.swift in Sources */,
 				6EFA53822271A9CD00B73BFE /* Comment.swift in Sources */,
